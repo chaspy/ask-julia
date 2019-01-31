@@ -5,6 +5,7 @@ volume=''
 
 docker build -t ask:${version} .
 exist_flag=`docker container ls --all | grep ask_container | wc -l`
+
 if [ '$exist_flag' != 0 ]; then
   docker rm ask_container
 fi
