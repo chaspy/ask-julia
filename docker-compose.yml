@@ -1,0 +1,10 @@
+version: "3"
+services:
+  ask:
+    container_name: "ask"
+    build: .
+    image: ask
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./volume:/volume
