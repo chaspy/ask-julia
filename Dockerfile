@@ -9,4 +9,4 @@ RUN apt-get update && apt-get -y upgrade \
 COPY volume /work
 RUN julia /work/install.jl
 
-CMD ["/bin/bash"]
+CMD ["julia", "volume/samp_app.jl"]
