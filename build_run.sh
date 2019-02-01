@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 version=0.1
 volume=''
@@ -15,6 +16,6 @@ if [ '$volume' = '' ]; then
   echo novolume
   docker run -it --name ask_container -p 8000:8000 ask:${version}
 else
-  docker run -it --name ask_container -p 8000:8000 -v ${volume}:/work ask:${version}
+  docker run -it --name ask_container -p 8000:8000 -v ${volume}:/work ask:${version} julia work/samp_app.jl
 fi
 
