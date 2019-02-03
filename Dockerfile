@@ -12,4 +12,4 @@ COPY volume /work
 
 RUN julia /work/install.jl
 
-CMD ["julia", "/work/samp_app.jl"]
+CMD ["julia", "/work/samp_app/samp_app.jl"]
