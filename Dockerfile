@@ -1,12 +1,15 @@
-from  julia:1.1
+from julia:1.1
 
+RUN apt-get update && apt-get -y upgrade \
+    && apt-get -y install --no-install-recommends \
+      git \
+      postgresql \
+      vim \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /work
-RUN apt-get update && apt-get -y upgrade \
-    && apt-get -y install vim git postgresql
-
-
 COPY volume /work
+
 RUN julia /work/install.jl
 
-CMD ["julia", "volume/samp_app.jl"]
+CMD ["julia", "/work/samp_app.jl"]
