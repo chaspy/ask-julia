@@ -1,4 +1,4 @@
-from  julia:1.1
+from julia:1.1
 
 
 RUN mkdir /work
