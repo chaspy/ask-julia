@@ -19,7 +19,7 @@ prod:
   config:
 
 test:
-  adapter:
+  adapter: SQLite
   database:
   host:
   username:
