@@ -1,0 +1,11 @@
+<!-- billgatesbooks.jl.html -->
+<h1>Temporary Questions top $( length(@vars(:questions)) ) </h1>
+<ul>
+   <%
+      @foreach(@vars(:questions)) do question
+         "<li>$(question.question) by $(question.author)" 
+         "delete"
+      end
+   %>
+   
+</ul>
