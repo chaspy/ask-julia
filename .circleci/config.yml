@@ -23,7 +23,11 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run: docker-compose build
       - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-      - run: docker push chaspy/ask:latest
+      - run: 
+          command: |
+            if [[ $CIRCLE_BRANCH == "master" ]]; then
+              docker push chaspy/ask:latest
+            fi
 
 workflows:
   version: 2
