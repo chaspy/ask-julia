@@ -18,10 +18,9 @@ function index()
   """
   :questions : questions resource(dir) 
   :questiontop: name of viewfile, questiontop.jl.html
-  books = BillGatesBooks: @var books in jl.html
+  questions: @var :questions in jl.html
   """
   html!(:questions, Symbol("questiontop.jl.html"), questions = SearchLight.all(Question))
-  #html!(:questions, Symbol("questiontop.jl.html"), books = BillGatesBooks)
 end
 
 end # module
