@@ -1,0 +1,10 @@
+<!-- app/resources/books/views/new.jl.html -->
+<h2>Add a new question</h2>
+<p>
+  For inspiration you can visit 
+</p>
+<form action="$(Genie.Router.link_to(:create_question))" method="POST">
+  <input type="text" name="question_precise" placeholder="question precies" /><br />
+  <input type="text" name="question_author" placeholder="question author" /><br />
+  <input type="submit" value="Add question" />
+</form>
