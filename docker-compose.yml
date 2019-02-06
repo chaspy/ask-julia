@@ -3,7 +3,7 @@ services:
   ask:
     container_name: "ask"
     build: .
-    image: ask
+    image: chaspy/ask
     ports:
       - "8000:8000"
     volumes:
