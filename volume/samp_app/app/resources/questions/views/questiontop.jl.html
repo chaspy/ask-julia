@@ -3,7 +3,8 @@
 <ul>
    <%
       @foreach(@vars(:questions)) do question
-         "<li>$(question.question) by $(question.author) delete"
+         "<li>$(question.question) by $(question.author) 
+            <a href=questions/delete/$(get(question.id))>delete</a>"
       end
    %>
    

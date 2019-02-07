@@ -12,5 +12,6 @@ using Questions
 # add initial seed data
 # Questions.seed()
 print(SearchLight.Database.query("select * from questions;"))
+print(SearchLight.count(Question))
 
 Genie.AppServer.startup(8000, "0.0.0.0")
