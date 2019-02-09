@@ -13,6 +13,10 @@ function create()
   redirect_to(:questions) 
 end
 
+function delete(id::Integer)
+  SearchLight.delete(SearchLight.find_one!!(Question, id))
+  redirect_to(:questions) 
+end
 
 function index()
   """
