@@ -10,12 +10,12 @@ end
 
 function create()
   Question(question = @params(:question_precise), author = @params(:question_author)) |> save 
+  redirect_to(:questions) 
 end
 
 function delete(id::Integer)
   SearchLight.delete(SearchLight.find_one!!(Question, id))
   redirect_to(:questions) 
-  #html!(:questions, Symbol("questiontop.jl.html"), questions = SearchLight.all(Question))
 end
 
 function index()

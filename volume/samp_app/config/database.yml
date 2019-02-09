@@ -1,17 +1,17 @@
 env: dev
 
 dev:
-  adapter: SQLite
-  database: db/ask.sqlite
-  host:
-  username:
-  password:
-  port:
+  adapter: PostgreSQL
+  database: postgres
+  host: localhost
+  username: postgres
+  password: postgres
+  port: 5432
   config:
 
 prod:
   adapter: SQLite
-  database:
+  database: db/ask.sqlite
   host:
   username:
   password:

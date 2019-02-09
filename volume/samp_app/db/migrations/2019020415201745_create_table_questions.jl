@@ -11,7 +11,8 @@ function up()
     ]
   end
 
-  add_index(:questions, :column_name)
+  add_index(:questions, :question)
+  add_index(:questions, :author)
 end
 
 function down()

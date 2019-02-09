@@ -13,6 +13,4 @@ route("/questions/create", QuestionsController.create,
 route("/questions/delete/:id::Int") do
   id = @params(:id)
   QuestionsController.delete(id)
-  #redirect_to(:questions) 
-  #QuestionsController.delete(@params(:id))
 end
