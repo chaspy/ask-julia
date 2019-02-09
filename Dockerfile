@@ -7,9 +7,10 @@ RUN apt-get update && apt-get -y upgrade \
       vim \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /volume
-COPY volume /volume
-
+# install packages first to avoid building each time
+COPY volume/install.jl /volume/install.jl
 RUN julia /volume/install.jl
+
+COPY volume /volume
 
 CMD ["julia", "/volume/samp_app/samp_app.jl"]
