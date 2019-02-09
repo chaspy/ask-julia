@@ -28,9 +28,40 @@ jobs:
             if [[ $CIRCLE_BRANCH == "master" ]]; then
               docker push chaspy/ask:latest
             fi
+  deploy:
+    docker:
+      - image: circleci/python:3.6.1
+    environment:
+      AWS_DEFAULT_OUTPUT: json
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install the AWS CLI
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache:
+          key: v1-{{ checksum "requirements.txt" }}
+          paths:
+            - venv
+      - run: |
+          curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/local/bin/ecs-deploy
+          sudo chmod +x /usr/local/bin/ecs-deploy
+      - run: |
+          . venv/bin/activate
+          ecs-deploy -n ask-service -k $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -r $AWS_DEFAULT_REGION -c ask-cluster -i chaspy/ask:latest
 
 workflows:
   version: 2
-  build:
+  build_and_deploy:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
+#          filters:
+#            branches:
+#              only: master
