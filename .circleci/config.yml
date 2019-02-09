@@ -52,7 +52,7 @@ jobs:
           sudo chmod +x /usr/local/bin/ecs-deploy
       - run: |
           . venv/bin/activate
-          ecs-deploy -n ask-service -k $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -r $AWS_DEFAULT_REGION -c ask-cluster -i chaspy/ask:latest
+          ecs-deploy -n ask-service -k $AWS_ACCESS_KEY_ID -s $AWS_SECRET_ACCESS_KEY -r $AWS_DEFAULT_REGION -c ask-cluster -i chaspy/ask:latest -t 180
 
 workflows:
   version: 2
