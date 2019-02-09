@@ -7,9 +7,9 @@ RUN apt-get update && apt-get -y upgrade \
       vim \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /work
-COPY volume /work
+RUN mkdir /volume
+COPY volume /volume
 
-RUN julia /work/install.jl
+RUN julia /volume/install.jl
 
-CMD ["julia", "/work/samp_app/samp_app.jl"]
+CMD ["julia", "/volume/samp_app/samp_app.jl"]
